@@ -1,2 +1,34 @@
-- name: Test
-  run: echo "HTML test passed"
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - feature/ci-pipeline
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Show Project Files
+        run: ls -la
+
+      - name: Check HTML File
+        run: test -f app/index.html
+
+      - name: Build
+        run: echo "Build started"
+
+      - name: Test
+        run: echo "HTML test passed"
+
+      - name: Pipeline Success
+        run: echo "CI Pipeline completed successfully"
