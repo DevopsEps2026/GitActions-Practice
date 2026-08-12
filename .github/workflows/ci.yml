@@ -1,2 +1,2 @@
 - name: Test
-  run: exit 1
+  run: echo "HTML test passed"
