@@ -1,6 +1,14 @@
 name: CI Pipeline
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+      - feature/ci-pipeline
+
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -10,14 +18,17 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Check Files
+      - name: Show Project Files
         run: ls -la
 
-      - name: Check HTML
+      - name: Check HTML File
         run: test -f app/index.html
 
       - name: Build
-        run: echo "Build successful"
+        run: echo "Build started"
 
       - name: Test
-        run: echo "Test successful"
+        run: echo "HTML test passed"
+
+      - name: Deployment Message
+        run: echo "CI Pipeline completed successfully"
